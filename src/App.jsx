@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Header from './components/Header'
 import BookCard from './components/BookCard'
+import BookDetail from './components/BookDetail'
 import AddBookModal from './components/AddBookModal'
 import ReadingView from './components/ReadingView'
 import './App.css'
@@ -8,6 +9,7 @@ import './App.css'
 function App() {
   const [books, setBooks] = useState([])
   const [modalOpen, setModalOpen] = useState(false)
+  const [selectedBook, setSelectedBook] = useState(null)
   const [view, setView] = useState('all')
 
   const booksRead = books.filter(b => b.status === 'completed').length
@@ -16,9 +18,12 @@ function App() {
     setBooks(prev => [...prev, book])
   }
 
-  const filtered = view === 'all'
-    ? books
-    : books.filter(b => b.status === view)
+  function handleSaveBook(updated) {
+    setBooks(prev => prev.map(b => b.id === updated.id ? updated : b))
+    setSelectedBook(updated)
+  }
+
+  const filtered = view === 'all' ? books : books.filter(b => b.status === view)
 
   return (
     <>
@@ -33,11 +38,11 @@ function App() {
 
       <main>
         {view === 'reading'
-          ? <ReadingView books={filtered} />
+          ? <ReadingView books={filtered} onSelect={setSelectedBook} />
           : (
             <div className="books-grid">
               {filtered.map(book => (
-                <BookCard key={book.id} book={book} />
+                <BookCard key={book.id} book={book} onClick={() => setSelectedBook(book)} />
               ))}
             </div>
           )
@@ -48,6 +53,14 @@ function App() {
         <AddBookModal
           onClose={() => setModalOpen(false)}
           onAdd={handleAddBook}
+        />
+      )}
+
+      {selectedBook && (
+        <BookDetail
+          book={selectedBook}
+          onClose={() => setSelectedBook(null)}
+          onSave={handleSaveBook}
         />
       )}
     </>

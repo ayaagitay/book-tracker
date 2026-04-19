@@ -1,4 +1,4 @@
-export default function ReadingView({ books }) {
+export default function ReadingView({ books, onSelect }) {
   if (books.length === 0) {
     return <p className="empty-msg">No books here yet.</p>
   }
@@ -6,7 +6,7 @@ export default function ReadingView({ books }) {
   return (
     <div className="reading-view">
       {books.map(book => (
-        <div key={book.id} className="reading-card">
+        <div key={book.id} className="reading-card" onClick={() => onSelect(book)} style={{ cursor: 'pointer' }}>
           {book.photoUrl
             ? <img className="reading-card-cover" src={book.photoUrl} alt={book.title} />
             : <div className="reading-card-no-cover">No cover</div>

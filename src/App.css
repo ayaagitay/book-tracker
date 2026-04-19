@@ -196,6 +196,20 @@
   margin: 0;
 }
 
+/* ── Book Card Status Badge ── */
+.book-card-status {
+  display: inline-block;
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 50px;
+  margin-top: 4px;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+.book-card-status--reading  { background: #fff0c2; color: #8a6000; }
+.book-card-status--completed { background: #d4f5e2; color: #1a6640; }
+.book-card-status--wishlist  { background: #f0e6d8; color: #7a4f2e; }
+
 /* ── Books Grid ── */
 .books-grid {
   display: flex;
@@ -209,49 +223,57 @@
   background: #fdf6ee;
   border: 1px solid #e8ddd0;
   border-radius: 12px;
-  width: 200px;
+  width: 160px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.book-card:hover {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+
+.book-card-placeholder {
+  width: 100%;
+  height: 220px;
+  background: #f0e6d8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .book-card-cover {
   width: 100%;
-  height: 260px;
+  height: 220px;
   object-fit: cover;
 }
 
+.book-card-no-cover {
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
 .book-card-info {
-  padding: 14px;
+  padding: 12px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
 }
 
 .book-card-title {
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: #111;
   margin: 0;
 }
 
 .book-card-author {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: #555;
   margin: 0;
-}
-
-.book-card-date {
-  font-size: 0.75rem;
-  color: #888;
-  margin: 4px 0 0;
-}
-
-.book-card-comments {
-  font-size: 0.78rem;
-  color: #666;
-  font-style: italic;
-  margin: 6px 0 0;
 }
 
 /* ── Add Book Modal ── */
@@ -467,4 +489,108 @@
   padding: 40px;
   color: #aaa;
   font-size: 1rem;
+}
+
+/* ── Book Detail ── */
+.detail-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detail {
+  background: #fdf6ee;
+  border-radius: 16px;
+  padding: 36px;
+  width: 90%;
+  max-width: 680px;
+  max-height: 88vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.detail-view {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.detail-cover {
+  width: 200px;
+  min-width: 200px;
+  height: 290px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+}
+
+.detail-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.detail-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #111;
+  margin: 0;
+}
+
+.detail-author {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0;
+}
+
+.detail-date {
+  font-size: 0.82rem;
+  color: #888;
+  margin: 0;
+}
+
+.detail-comments {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: #666;
+  line-height: 1.6;
+  margin: 4px 0 0;
+}
+
+.detail-edit-btn {
+  margin-top: 16px;
+  align-self: flex-start;
+}
+
+.detail-edit {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.detail-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.detail-cancel {
+  padding: 12px 20px;
+  border-radius: 50px;
+  border: 2px solid #ccc;
+  background: transparent;
+  font-size: 0.95rem;
+  cursor: pointer;
+  color: #666;
+  transition: border-color 0.2s, color 0.2s;
+  font-family: inherit;
+}
+
+.detail-cancel:hover {
+  border-color: #999;
+  color: #333;
 }

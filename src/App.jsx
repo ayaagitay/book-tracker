@@ -7,7 +7,9 @@ import ReadingView from './components/ReadingView'
 import './App.css'
 
 function App() {
-  const [books, setBooks] = useState([])
+  const [books, setBooks] = useState(() => {
+    try { return JSON.parse(localStorage.getItem('books')) || [] } catch { return [] }
+  })
   const [modalOpen, setModalOpen] = useState(false)
   const [selectedBook, setSelectedBook] = useState(null)
   const [view, setView] = useState('all')
@@ -15,11 +17,19 @@ function App() {
   const booksRead = books.filter(b => b.status === 'completed').length
 
   function handleAddBook(book) {
-    setBooks(prev => [...prev, book])
+    setBooks(prev => {
+      const next = [...prev, book]
+      localStorage.setItem('books', JSON.stringify(next))
+      return next
+    })
   }
 
   function handleSaveBook(updated) {
-    setBooks(prev => prev.map(b => b.id === updated.id ? updated : b))
+    setBooks(prev => {
+      const next = prev.map(b => b.id === updated.id ? updated : b)
+      localStorage.setItem('books', JSON.stringify(next))
+      return next
+    })
     setSelectedBook(updated)
   }
 

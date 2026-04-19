@@ -16,10 +16,12 @@
 }
 
 .header-title {
-  font-size: 1.4rem;
-  font-weight: 700;
+  font-size: 2rem;
+  font-weight: 400;
   color: #111;
   margin: 0;
+  font-family: jetBrainsS;
+  letter-spacing: 0.03em;
 }
 
 .header-subtitle {

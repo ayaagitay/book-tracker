@@ -131,17 +131,69 @@
   gap: 12px;
 }
 
-.sidebar-nav a {
+.sidebar-link {
   color: #111;
-  text-decoration: none;
+  background: transparent;
+  border: none;
   font-size: 1rem;
   padding: 8px 12px;
   border-radius: 8px;
+  cursor: pointer;
+  text-align: left;
   transition: background 0.2s;
+  font-family: inherit;
 }
 
-.sidebar-nav a:hover {
+.sidebar-link:hover {
   background: #f0e6d8;
+}
+
+.sidebar-link--active {
+  background: #f0e6d8;
+  font-weight: 600;
+}
+
+.sidebar-books {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.sidebar-books-label {
+  font-size: 0.75rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 4px;
+}
+
+.sidebar-book-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sidebar-book-thumb {
+  width: 36px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.sidebar-book-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #111;
+  margin: 0;
+}
+
+.sidebar-book-author {
+  font-size: 0.75rem;
+  color: #777;
+  margin: 0;
 }
 
 /* ── Books Grid ── */
@@ -321,4 +373,98 @@
   background-color: #d94f6b;
   border-color: #d94f6b;
   color: #fff;
+}
+
+.modal-field select {
+  padding: 10px 12px;
+  border: 1.5px solid #e8ddd0;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 0.9rem;
+  color: #111;
+  outline: none;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.modal-field select:focus {
+  border-color: #d94f6b;
+}
+
+/* ── Reading Now View ── */
+.reading-view {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  padding: 40px;
+}
+
+.reading-card {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.reading-card-cover {
+  width: 260px;
+  min-width: 260px;
+  height: 380px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+}
+
+.reading-card-no-cover {
+  width: 260px;
+  min-width: 260px;
+  height: 380px;
+  border-radius: 12px;
+  background: #f0e6d8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.reading-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 12px;
+}
+
+.reading-card-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #111;
+  margin: 0;
+}
+
+.reading-card-author {
+  font-size: 1rem;
+  color: #555;
+  margin: 0;
+}
+
+.reading-card-date {
+  font-size: 0.85rem;
+  color: #888;
+  margin: 0;
+}
+
+.reading-card-comments {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: #666;
+  margin: 8px 0 0;
+  max-width: 480px;
+  line-height: 1.6;
+}
+
+.empty-msg {
+  padding: 40px;
+  color: #aaa;
+  font-size: 1rem;
 }

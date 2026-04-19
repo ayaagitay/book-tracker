@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Sidebar from './Sidebar'
 
-export default function Header({ booksRead, totalBooks, onAddBook }) {
+export default function Header({ booksRead, totalBooks, onAddBook, books, view, onViewChange }) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   return (
@@ -19,6 +19,7 @@ export default function Header({ booksRead, totalBooks, onAddBook }) {
 
         <div className="header-center">
           <h1 className="header-title">My little library</h1>
+          <p className="header-subtitle">{booksRead} of {totalBooks} books read</p>
         </div>
 
         <button className="header-btn header-btn--add" aria-label="Add book" onClick={onAddBook}>
@@ -26,7 +27,13 @@ export default function Header({ booksRead, totalBooks, onAddBook }) {
         </button>
       </header>
 
-      <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+      <Sidebar
+        open={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
+        books={books}
+        view={view}
+        onViewChange={onViewChange}
+      />
     </>
   )
 }

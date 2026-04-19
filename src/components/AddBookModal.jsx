@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const empty = { title: '', author: '', photoUrl: '', startedReading: '', comments: '' }
+const empty = { title: '', author: '', photoUrl: '', startedReading: '', comments: '', status: 'reading' }
 
 export default function AddBookModal({ onClose, onAdd }) {
   const [form, setForm] = useState(empty)
@@ -12,7 +12,7 @@ export default function AddBookModal({ onClose, onAdd }) {
   function handleSubmit(e) {
     e.preventDefault()
     if (!form.title || !form.author) return
-    onAdd({ ...form, id: Date.now(), read: false })
+    onAdd({ ...form, id: Date.now() })
     setForm(empty)
     onClose()
   }
@@ -40,6 +40,15 @@ export default function AddBookModal({ onClose, onAdd }) {
             {form.photoUrl && (
               <img className="modal-preview" src={form.photoUrl} alt="cover preview" />
             )}
+          </div>
+
+          <div className="modal-field">
+            <label>Status</label>
+            <select name="status" value={form.status} onChange={handleChange}>
+              <option value="reading">Reading now</option>
+              <option value="completed">Completed</option>
+              <option value="wishlist">Wishlist</option>
+            </select>
           </div>
 
           <div className="modal-field">

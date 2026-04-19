@@ -44,7 +44,7 @@ export default function AddBookModal({ onClose, onAdd }) {
 
           <div className="modal-field">
             <label>Started reading</label>
-            <input name="startedReading" type="date" value={form.startedReading} onChange={handleChange} />
+            <input name="startedReading" type="text" value={form.startedReading} onChange={handleChange} placeholder="DD.MM.YYYY" />
           </div>
 
           <div className="modal-field">

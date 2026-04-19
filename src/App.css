@@ -217,10 +217,10 @@
   background: #fdf6ee;
   border-radius: 16px;
   padding: 32px;
-  width: 100%;
-  max-width: 480px;
+  width: 90%;
+  max-width: 420px;
   position: relative;
-  max-height: 90vh;
+  max-height: 85vh;
   overflow-y: auto;
 }
 

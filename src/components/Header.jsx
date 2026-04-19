@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Sidebar from './Sidebar'
 
-export default function Header({ booksRead, totalBooks }) {
+export default function Header({ booksRead, totalBooks, onAddBook }) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   return (
@@ -21,7 +21,7 @@ export default function Header({ booksRead, totalBooks }) {
           <h1 className="header-title">My little library</h1>
         </div>
 
-        <button className="header-btn header-btn--add" aria-label="Add book">
+        <button className="header-btn header-btn--add" aria-label="Add book" onClick={onAddBook}>
           +
         </button>
       </header>

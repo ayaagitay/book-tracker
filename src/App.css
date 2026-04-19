@@ -198,15 +198,18 @@
 
 /* ── Book Card Status Badge ── */
 .book-card-status {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-size: 0.7rem;
-  padding: 2px 8px;
+  padding: 8px;
   border-radius: 50px;
-  margin-top: 4px;
   text-transform: capitalize;
   font-weight: 500;
+  /* align-self: flex-start; */
+  line-height: 1;
 }
-.book-card-status--reading  { background: #fff0c2; color: #8a6000; }
+.book-card-status--reading   { background: #fff0c2; color: #8a6000; }
 .book-card-status--completed { background: #d4f5e2; color: #1a6640; }
 .book-card-status--wishlist  { background: #f0e6d8; color: #7a4f2e; }
 
@@ -238,7 +241,7 @@
 
 .book-card-placeholder {
   width: 100%;
-  height: 220px;
+  height: 280px;
   background: #f0e6d8;
   display: flex;
   align-items: center;
@@ -247,7 +250,7 @@
 
 .book-card-cover {
   width: 100%;
-  height: 220px;
+  height: 280px;
   object-fit: cover;
 }
 
@@ -261,6 +264,7 @@
   display: flex;
   flex-direction: column;
   gap: 2px;
+  flex: 1;
 }
 
 .book-card-title {
@@ -268,12 +272,16 @@
   font-weight: 600;
   color: #111;
   margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .book-card-author {
   font-size: 0.75rem;
   color: #555;
-  margin: 0;
+  margin: 0 0 auto;
 }
 
 /* ── Add Book Modal ── */
